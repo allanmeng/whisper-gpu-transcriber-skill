@@ -1,30 +1,30 @@
-# 🎙️ Whisper GPU 音频转字幕
+# 🎙️ Whisper GPU Audio Transcriber
 
-使用本地 Whisper 模型将音频文件转录为 SRT 字幕，**完全免费**，无需联网，支持 GPU 加速。
+Convert audio files to SRT subtitles using local Whisper models — **completely free**, offline, and GPU accelerated.
 
-## ✨ 主要特性
+## ✨ Features
 
-- **完全免费** — 本地运行，替代剪映付费字幕功能
-- **GPU 加速** — 自动检测并使用 Intel XPU / NVIDIA CUDA / AMD ROCm / Apple Metal
-- **智能适配** — 自动选择最优运行参数（如 Intel XPU 自动关闭 FP16）
-- **高精度** — 支持 Whisper Turbo 模型，速度与精度兼顾
+- **100% Free** — Local execution, no API costs, alternative to paid subtitle services
+- **GPU Accelerated** — Automatic detection and usage of Intel XPU / NVIDIA CUDA / AMD ROCm / Apple Metal
+- **Smart Adaptation** — Automatically selects optimal parameters (e.g., disables FP16 for Intel XPU)
+- **High Accuracy** — Supports Whisper Turbo model for balanced speed and quality
 
-## 📦 适用场景
+## 📦 Use Cases
 
-- 自媒体视频制作（YouTube、B站、抖音等）
-- 会议录音转文字
-- 播客/课程内容转字幕
-- 直播回放整理
+- Content creation (YouTube, Bilibili, TikTok, etc.)
+- Meeting transcription
+- Podcast/course subtitles
+- Stream replay organization
 
-## 🚀 快速开始
+## 🚀 Quick Start
 
-### 安装依赖
+### Install Dependencies
 
 ```bash
 pip install openai-whisper
 ```
 
-根据你的硬件安装对应的 PyTorch 版本：
+Install PyTorch matching your hardware:
 
 ```bash
 # Intel GPU
@@ -37,116 +37,120 @@ pip install torch --index-url https://download.pytorch.org/whl/cu121
 pip install torch
 ```
 
-### 使用方法
+### Usage
 
-安装此 Skill 后，直接告诉 AI：
-
-```
-把 xxx.mp3 转成 SRT 字幕文件
-```
-
-或者指定路径：
+After installing this Skill, simply tell the AI:
 
 ```
-把 /path/to/audio.mp3 转成 SRT 字幕
+Convert xxx.mp3 to SRT subtitles
 ```
 
-### 高级用法
+Or specify the full path:
 
 ```
-把 xxx.mp3 用 large-v3-turbo 模型转成英文字幕
-把 xxx.mp3 转成字幕，语言是日语
+Convert /path/to/audio.mp3 to SRT subtitles
 ```
 
-## 🎬 字幕文件支持平台
+### Advanced Usage
 
-生成的 `.srt` 字幕文件可以在以下平台直接使用：
+```
+Convert xxx.mp3 to English subtitles using large-v3-turbo model
+Convert xxx.mp3 to subtitles, language is Japanese
+```
 
-### 视频剪辑软件
-| 软件 | 支持情况 |
-|------|---------|
-| **剪映** | ✅ 完美支持，导入后可编辑样式 |
-| **Adobe Premiere Pro** | ✅ 原生支持 |
-| **DaVinci Resolve** | ✅ 原生支持 |
-| **Final Cut Pro** | ✅ 原生支持（通过插件） |
-| **CapCut (电脑版)** | ✅ 完美支持 |
+## 🎬 Supported Subtitle Platforms
 
-### 播放器
-| 播放器 | 支持情况 |
+The generated `.srt` subtitle files can be used directly in these platforms:
+
+### Video Editing Software
+| Software | Support |
+|----------|---------|
+| **剪映 (Jianying)** | ✅ Full support, editable styles after import |
+| **Adobe Premiere Pro** | ✅ Native support |
+| **DaVinci Resolve** | ✅ Native support |
+| **Final Cut Pro** | ✅ Native support (via plugin) |
+| **CapCut (Desktop)** | ✅ Full support |
+
+### Media Players
+| Player | Support |
 |--------|---------|
-| **PotPlayer** | ✅ 自动加载同名 SRT 文件 |
-| **VLC Media Player** | ✅ 自动加载同名 SRT 文件 |
-| **IINA (macOS)** | ✅ 自动加载同名 SRT 文件 |
-| **MPV** | ✅ 自动加载同名 SRT 文件 |
-| **QQ影音** | ✅ 自动加载同名 SRT 文件 |
+| **PotPlayer** | ✅ Auto-loads same-named SRT files |
+| **VLC Media Player** | ✅ Auto-loads same-named SRT files |
+| **IINA (macOS)** | ✅ Auto-loads same-named SRT files |
+| **MPV** | ✅ Auto-loads same-named SRT files |
+| **QQ Player** | ✅ Auto-loads same-named SRT files |
 
-### 在线平台
-| 平台 | 支持情况 | 注意事项 |
-|------|---------|---------|
-| **B站** | ✅ 上传时选择「字幕」 | 支持 SRT 格式直接上传 |
-| **YouTube** | ✅ 创作者工作室 | 支持字幕轨道上传 |
-| **抖音** | ✅ 需通过剪映处理 | 不能直接上传 SRT，需通过剪映导入 |
-| **视频号** | ⚠️ 需转换 | 可能需要转换格式 |
-| **西瓜视频** | ✅ 类似 B 站 | 支持 SRT 格式 |
+### Online Platforms
+| Platform | Support | Notes |
+|----------|---------|-------|
+| **Bilibili** | ✅ Upload with subtitles | Direct SRT upload supported |
+| **YouTube** | ✅ Creator Studio | Subtitle track upload supported |
+| **TikTok (Douyin)** | ✅ Via Jianying | Cannot upload SRT directly, import via Jianying |
+| **WeChat Channels** | ⚠️ Conversion needed | May require format conversion |
+| **Xigua Video** | ✅ Like Bilibili | SRT format supported |
 
-### 字幕编辑工具
-| 工具 | 用途 |
-|------|------|
-| **Subtitle Edit** | 专业字幕编辑，支持 SRT |
-| **Aegisub** | 动画字幕制作 |
-| **Arctime** | 国产字幕编辑软件 |
-| **Notepad++** | 简单文本编辑 |
+### Subtitle Editing Tools
+| Tool | Purpose |
+|------|---------|
+| **Subtitle Edit** | Professional subtitle editing, SRT support |
+| **Aegisub** | Anime subtitle production |
+| **Arctime** | Domestic subtitle editing software |
+| **Notepad++** | Simple text editing |
 
-> 💡 **提示**：大多数平台会自动加载与视频文件同名的 `.srt` 文件，无需手动导入。例如 `video.mp4` 会自动加载 `video.srt`。
+> 💡 **Tip**: Most platforms automatically load `.srt` files with the same name as the video file. For example, `video.mp4` will automatically load `video.srt`.
 
-## 🖥️ 支持的 GPU 加速
+## 🖥️ Supported GPU Acceleration
 
-| 设备 | 加速方式 | FP16 | 备注 |
-|------|---------|------|------|
-| Intel Arc 系列 | XPU | ❌ 自动关闭 | 需要 PyTorch XPU 版本 |
-| NVIDIA 显卡 | CUDA | ✅ 自动开启 | 推荐 RTX 30/40 系列 |
-| AMD 显卡 | ROCm | ✅ 自动开启 | Linux 下支持最佳 |
-| Apple M1/M2/M3 | Metal | ✅ 自动开启 | macOS 原生支持 |
-| 无 GPU | CPU | ❌ 自动关闭 | 兜底选项 |
+| Device | Acceleration | FP16 | Notes |
+|--------|-------------|------|-------|
+| Intel Arc Series | XPU | ❌ Auto-disabled | Requires PyTorch XPU version |
+| NVIDIA GPUs | CUDA | ✅ Auto-enabled | Recommended for RTX 30/40 series |
+| AMD GPUs | ROCm | ✅ Auto-enabled | Best support on Linux |
+| Apple M1/M2/M3 | Metal | ✅ Auto-enabled | Native macOS support |
+| No GPU | CPU | ❌ Auto-disabled | Fallback option |
 
-## 📊 支持的 Whisper 模型
+## 📊 Supported Whisper Models
 
-| 模型 | 大小 | 速度 | 精度 | 推荐场景 |
-|------|------|------|------|---------|
-| `tiny` | 39M | 极快 | 低 | 快速预览 |
-| `base` | 74M | 快 | 中 | 日常使用 |
-| `small` | 244M | 中 | 中 | 平衡选择 |
-| `medium` | 769M | 慢 | 高 | 高质量需求 |
-| `turbo` | 809M | 中 | 高 | ✅ **默认推荐** |
-| `large-v3` | 1550M | 最慢 | 最高 | 专业需求 |
-| `large-v3-turbo` | 1550M | 慢 | 最高 | 专业需求 |
+| Model | Size | Speed | Accuracy | Recommended For |
+|-------|------|-------|----------|----------------|
+| `tiny` | 39M | Fastest | Low | Quick preview |
+| `base` | 74M | Fast | Medium | Daily use |
+| `small` | 244M | Medium | Medium | Balanced choice |
+| `medium` | 769M | Slow | High | High-quality needs |
+| `turbo` | 809M | Medium | High | ✅ **Default recommended** |
+| `large-v3` | 1550M | Slowest | Highest | Professional needs |
+| `large-v3-turbo` | 1550M | Slow | Highest | Professional needs |
 
-## ⚙️ 执行方式
+## ⚙️ Execution
 
-AI 会调用项目目录中的 `scripts/transcribe.py` 脚本执行转录，脚本会：
+AI will execute the `scripts/transcribe.py` script in your project directory, which will:
 
-1. 自动检测可用 GPU 设备并选择最优加速方式
-2. 加载 Whisper 模型（默认 `turbo`）
-3. 将音频转录为 SRT 格式字幕
-4. 输出文件保存在与音频同目录
+1. Automatically detect available GPU devices and select optimal acceleration
+2. Load Whisper model (default: `turbo`)
+3. Transcribe audio to SRT format
+4. Save output in the same directory as the audio
 
-## 📝 注意事项
+## 📝 Notes
 
-- 首次运行会自动下载模型文件（turbo 约 1.5GB）
-- 模型默认缓存在 `~/.cache/whisper`，可用软链接/Junction 指向其他磁盘
-- Intel XPU 需要 Intel Arc 独显 + 对应版本 PyTorch
-- 国内用户：如模型下载失败，可手动从镜像站下载后放入 `~/.cache/whisper/`
+- First run will auto-download the model file (turbo ~1.5GB)
+- Models cache in `~/.cache/whisper` by default, can use symlink/Junction to redirect
+- Intel XPU requires Intel Arc GPU + matching PyTorch version
+- China users: If model download fails, manually download from mirror sites and place in `~/.cache/whisper/`
 
-## 🔧 环境要求
+## 🔧 Requirements
 
 - Python 3.8+
-- PyTorch（对应你的硬件版本）
+- PyTorch (version matching your hardware)
 - openai-whisper
 
 ## 📄 License
 
 MIT License
 
-## 🤝 贡献
+## 🤝 Contributing
 
-欢迎提交 Issue 和 Pull Request！
+Issues and Pull Requests are welcome!
+
+## 🇨🇳 中文文档
+
+[README_ZH.md](README_ZH.md) - Complete documentation in Chinese / 完整的中文文档
