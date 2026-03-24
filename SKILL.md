@@ -5,7 +5,7 @@ version: 1.0.0
 metadata:
   openclaw:
     emoji: "🎙️"
-    homepage: https://github.com/openclaw/clawhub
+    homepage: https://github.com/allanmeng/whisper-gpu-transcriber-skill
     requires:
       bins:
         - python
